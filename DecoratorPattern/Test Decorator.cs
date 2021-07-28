@@ -11,19 +11,49 @@ namespace DecoratorPattern
 
 
             //Hamburguesa sin decorar
-            Hamburguesa hamburguesa = new HamburguesaSmall();
+            Hamburguesa hamburguesa = new HamburguesaBase();
 
-            //Decorando hamburguesa con ingredientes
-            hamburguesa = new QuesoDecorador(hamburguesa);
-            hamburguesa = new LechugaDecorador(hamburguesa);
+            
 
-            Console.WriteLine("Los ingredientes que pidio son: " + hamburguesa.Ingredientes);
-            Console.WriteLine("Y el precio seria: " + hamburguesa.Precio);
+            Console.WriteLine("Bienvenido a Burger King");
 
-            Console.ReadKey();
+            int opcionMenu =0;
 
+            do {
+                Console.WriteLine("Seleccione el ingrediente que desea:");
+                Console.WriteLine("1.Queso");
+                Console.WriteLine("2.Lechuga");
+                Console.WriteLine("3.Tomate");
+                Console.WriteLine("0.Terminar Orden");
+                opcionMenu = int.Parse(Console.ReadLine());
 
+                switch (opcionMenu) {
 
+                    case 0:
+                        break;
+
+                    case 1:
+                        hamburguesa = new QuesoDecorador(hamburguesa);
+                        break;
+
+                    case 2:
+                        hamburguesa = new LechugaDecorador(hamburguesa);
+                        break;
+
+                    case 3:
+                        hamburguesa = new TomateDecorator(hamburguesa);
+                        break;
+
+                    default:
+                        Console.WriteLine("Digite una opcion valida");
+                        break;
+                }
+
+            } while (opcionMenu!=0);
+            Console.WriteLine("");
+            Console.WriteLine("Su hamburguesa esta lista, Gracias por su compra.");
+            Console.WriteLine("Los ingredientes son: "+ hamburguesa.Ingredientes);
+            Console.WriteLine("El precio de su hamburguesa: "+ hamburguesa.Precio);
         }
 
     }

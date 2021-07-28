@@ -7,7 +7,7 @@ namespace DecoratorPattern
     public abstract class Hamburguesa
     {
 
-        public abstract double Precio { get; }
+        public abstract double Precio { get;  }
 
         public abstract string Ingredientes { get; }
 
